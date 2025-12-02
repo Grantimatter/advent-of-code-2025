@@ -1,50 +1,47 @@
 fn main() {
-    // Rotate the dial, starting at 50, returning the new position
-    let mut position = 50;
-    let rotations = DAY_ONE_DIAL_INPUT.lines();
-    let mut zero_count = 0;
-
-    for rotation in rotations {
-        position = turn_dial(position, rotation.trim());
-        if position == 0 {
-            zero_count += 1
-        }
-    }
-
-    println!("At zero position {zero_count} times.")
+    let zero_clicks = read_instructions(DAY_ONE_DIAL_INPUT.lines());
+    println!("Zero clicked {zero_clicks} times.")
 }
 
-fn turn_dial(starting_point: i32, rotation: &str) -> i32 {
-    let direction = &rotation[..1];
-    let distance: i32 = (rotation[1..]).parse::<i32>().unwrap();
+fn read_instructions<'a, I>(instructions: I) -> i32
+where
+    I: Iterator<Item = &'a str>,
+{
+    let mut position = 50;
+    let mut zero_clicks = 0;
+
+    for rotation in instructions {
+        let direction = &rotation[..1];
+        let distance = (rotation[1..].trim()).parse::<i32>().unwrap();
+        for _ in 0..distance {
+            position = turn_dial(position, direction);
+            if position == 0 {
+                zero_clicks += 1;
+            }
+        }
+    }
+    zero_clicks
+}
+
+fn turn_dial(starting_point: i32, direction: &str) -> i32 {
     match direction {
-        "R" => (starting_point + distance) % 100,
-        "L" => (100 + starting_point - distance) % 100,
+        "R" => {
+            if starting_point == 99 {
+                0
+            } else {
+                starting_point + 1
+            }
+        }
+        "L" => {
+            if starting_point == 0 {
+                99
+            } else {
+                starting_point - 1
+            }
+        }
         _ => {
             panic!("Unsupported rotation direction")
         }
-    }
-}
-
-pub mod tests {
-    use super::*;
-
-    #[test]
-    fn test_rotation_result() {
-        let result = turn_dial(99, "R65");
-        assert_eq!(result, 64);
-
-        let result = turn_dial(5, "L10");
-        assert_eq!(result, 95);
-
-        let result = turn_dial(0, "L46");
-        assert_eq!(result, 54);
-
-        let result = turn_dial(50, "L68");
-        assert_eq!(result, 82);
-
-        let result = turn_dial(result, "L30");
-        assert_eq!(result, 52);
     }
 }
 
