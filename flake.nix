@@ -19,6 +19,7 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            bacon
             openssl
             pkg-config
             eza
