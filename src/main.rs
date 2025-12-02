@@ -1,3 +1,3 @@
 fn main() {
-    println!("Hello, world!");
+    // All solutions are in the "examples" directory.
 }
