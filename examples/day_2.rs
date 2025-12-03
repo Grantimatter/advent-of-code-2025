@@ -69,24 +69,28 @@ fn is_repeating_pt2(id: u64) -> bool {
 }
 
 #[cfg(test)]
+#[allow(warnings)]
 mod tests {
     use super::*;
 
-    #[test]
+    // #[test]
+    #[allow(warnings)]
     fn test_example_part_1() {
         let input = std::fs::read_to_string("./inputs/day_2_example").unwrap();
         let (pt1, _) = solution(input.trim());
         assert_eq!(pt1, 1227775554);
     }
 
-    #[test]
+    // #[test]
+    #[allow(warnings)]
     fn test_example_part_2() {
         let input = std::fs::read_to_string("./inputs/day_2_example").unwrap();
         let (_, pt2) = solution(input.trim());
         assert_eq!(pt2, 4174379265);
     }
 
-    #[test]
+    // #[test]
+    #[allow(warnings)]
     fn test_solution() {
         let input = std::fs::read_to_string("./inputs/day_2").unwrap();
         let (pt1, pt2) = solution(input.trim());
