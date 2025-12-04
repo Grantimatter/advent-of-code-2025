@@ -120,7 +120,6 @@ fn solution_pt2(input: &str) -> u64 {
     let mut new_grid =
         accessible_rolls(grid.cells.lines().filter(|line| !line.is_empty()).collect());
     loop {
-        // println!("{}", new_grid.cells);
         if new_grid.accessible == 0 {
             break;
         } else {
