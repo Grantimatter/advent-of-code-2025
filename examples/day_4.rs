@@ -139,7 +139,7 @@ fn solution_pt2(input: &str) -> u64 {
 
 #[cfg(test)]
 #[allow(warnings)]
-mod tests {
+mod day_4_tests {
     use super::*;
 
     #[test]

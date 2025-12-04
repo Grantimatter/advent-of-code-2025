@@ -70,7 +70,7 @@ fn is_repeating_pt2(id: u64) -> bool {
 
 #[cfg(test)]
 #[allow(warnings)]
-mod tests {
+mod day_2_tests {
     use super::*;
 
     // #[test]

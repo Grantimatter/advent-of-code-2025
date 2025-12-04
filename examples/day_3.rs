@@ -71,7 +71,7 @@ fn next_highest_possible(bank: &str, remaining: usize) -> (u64, usize) {
 
 #[cfg(test)]
 #[allow(warnings)]
-mod test {
+mod day_3_tests {
     use super::*;
 
     #[test]

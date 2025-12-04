@@ -20,20 +20,8 @@
         devShells.default = mkShell {
           buildInputs = [
             bacon
-            openssl
-            pkg-config
-            eza
-            fd
             rust-bin.beta.latest.default
-            alsa-lib
-            udev
-            vulkan-loader
           ];
-
-          shellHook = ''
-            alias ls=eza
-            alias find=fd
-          '';
         };
       }
     );
