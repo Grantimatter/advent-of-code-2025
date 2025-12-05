@@ -108,7 +108,7 @@ fn can_access_roll(rows: &Vec<&str>, position: &Position) -> bool {
     true
 }
 
-fn get_cell_at_position(rows: &Vec<&str>, position: &Position) -> char {
+fn get_cell_at_position(rows: &[&str], position: &Position) -> char {
     rows[position.y].chars().nth(position.x).unwrap()
 }
 
